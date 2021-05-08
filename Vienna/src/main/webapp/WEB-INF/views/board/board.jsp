@@ -11,7 +11,7 @@
 $(document).ready(function(){
 	getBoardList();
 });
-
+/* sourceTreeTest */
 function getBoardList() {
 	$.ajax({
 		type: "POST",

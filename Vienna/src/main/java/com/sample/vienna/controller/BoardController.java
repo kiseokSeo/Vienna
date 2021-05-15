@@ -27,13 +27,7 @@ public class BoardController {
 	 */
 	@RequestMapping("/board")
 	public String boardMain(HttpServletRequest request, Model model) {
-		BoardVO boardVal = new BoardVO();
-		boardVal.setTitle((String) request.getParameter("title"));
-		boardVal.setContent((String) request.getParameter("content"));
-		boardVal.setWriter((String) request.getParameter("writer"));
-		
-		model.addAttribute("boardList", boardService.boardList(boardVal));
-		
+				
 		return "board/board";
 	}
 	
@@ -63,6 +57,7 @@ public class BoardController {
 		boardVal.setTitle((String) request.getParameter("title"));
 		boardVal.setContent((String) request.getParameter("content"));
 		boardVal.setWriter((String) request.getParameter("writer"));
+		
 		
 		boardService.boardInsert(boardVal);
 		

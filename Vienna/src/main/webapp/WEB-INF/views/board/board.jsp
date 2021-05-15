@@ -42,8 +42,7 @@ function getBoardList() {
 				html += "<td>"+getData[idx].cnt+"</td>"
 				
 				//$("#boardList tr").html(data);
-				//좆같은 깃허브
-			}
+				}
 			
 			$("#boardList").html(html);
 		},

@@ -3,7 +3,8 @@
 <mapper namespace="com.sample.vienna.mapper.BoardMapper">
 		
 	<!-- 전체 내용 조회 -->
-	<select id="boardList" resultType="com.sample.vienna.domain.BoardVO" parameterType="com.sample.vienna.domain.BoardVO">
+	<select id="boardList" resultType="com.sample.vienna.domain.BoardVO" 
+	parameterType="com.sample.vienna.domain.BoardVO">
 		SELECT
 			*
 		FROM board

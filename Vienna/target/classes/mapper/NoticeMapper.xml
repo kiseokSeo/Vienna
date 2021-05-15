@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.sample.vienna.mapper.NoticeMapper">
+
+	<!-- 전체 내용 조회 -->
+	<select id="noticeList"
+		resultType="com.sample.vienna.domain.ComBoardVO"
+		parameterType="com.sample.vienna.domain.ComBoardVO"> <!-- 받는값 -->
+		SELECT
+		board_code as code,
+		board_type as type,
+		board_title as title,
+		board_contents as contents,
+		board_cnt as cnt,
+		create_date as CDate,
+		create_by as CBy,
+		record_date as Rdate,
+		record_by as RBy,
+		del_yn as DelYn,
+		display_yn as DisplayYn
+
+		FROM com_board
+		where 1=1
+		<if test="title != null">
+			and board_title like '%' || #{title} || '%'
+		</if>
+		<if test="contents != null">
+			and board_contents like '%' || #{contents} ||'%'
+		</if>
+		<if test="create_by != null">
+			and create_by like '%' || #{CBy} || '%'
+		</if>
+		ORDER BY board_code
+	</select>
+
+	<insert id="noticeInsert"
+		parameterType="com.sample.vienna.domain.ComBoardVO">
+		insert INTO com_board
+		(
+		board_code ,
+		board_type ,
+		board_title ,
+		board_contents ,
+		board_cnt ,
+		create_date ,
+		create_by ,
+		record_date ,
+		record_by ,
+		del_yn ,
+		display_yn
+
+		)values(
+		ic.nextval,
+		#{board_type},
+		#{board_title},
+		#{board_contents},
+		sysdate,
+		#{create_by},
+		sysdate,
+		#{record_by}
+	
+		);
+
+	</insert>
+</mapper>

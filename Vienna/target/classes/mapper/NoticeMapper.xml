@@ -27,7 +27,7 @@
 		<if test="contents != null">
 			and board_contents like '%' || #{contents} ||'%'
 		</if>
-		<if test="create_by != null">
+		<if test="CBy != null">
 			and create_by like '%' || #{CBy} || '%'
 		</if>
 		ORDER BY board_code

@@ -15,6 +15,7 @@
 <div>
 	<input type="button" value="게시판" onclick="location.href='${CONTEXT_PATH}/board/board'" />
 	<input type="button" value="공지사항" onclick="location.href='${CONTEXT_PATH}/notice/noticeBoard'" />
+	<input type="button" value="QnA" onclick="location.href='${CONTEXT_PATH}/qna/qnaBoard'" />
 </div>
 </body>
 </html>

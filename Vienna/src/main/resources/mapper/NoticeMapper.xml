@@ -21,6 +21,7 @@
 
 		FROM com_board
 		where 1=1
+		and board_type = 'NOTICE'
 		<if test="title != null">
 			and board_title like '%' || #{title} || '%'
 		</if>
@@ -41,25 +42,20 @@
 		board_type ,
 		board_title ,
 		board_contents ,
-		board_cnt ,
 		create_date ,
 		create_by ,
 		record_date ,
-		record_by ,
-		del_yn ,
-		display_yn
-
+		record_by 
 		)values(
 		ic.nextval,
-		#{board_type},
-		#{board_title},
-		#{board_contents},
+		'NOTICE',
+		#{title},
+		#{contents},
 		sysdate,
-		#{create_by},
+		#{CBy},
 		sysdate,
-		#{record_by}
-	
-		);
-
+		#{CBy}
+		)
+		
 	</insert>
 </mapper>

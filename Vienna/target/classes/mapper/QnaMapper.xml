@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-<mapper namespace="com.sample.vienna.mapper.NoticeMapper">
+<mapper namespace="com.sample.vienna.mapper.QnaMapper">
 
 	<!-- 전체 내용 조회 -->
-	<select id="noticeList"
+	<select id="qnaList"
 		resultType="com.sample.vienna.domain.ComBoardVO"
 		parameterType="com.sample.vienna.domain.ComBoardVO"> <!-- 받는값 -->
 		SELECT
@@ -21,7 +21,7 @@
 
 		FROM com_board
 		where 1=1
-		and board_type = 'NOTICE'
+		and board_type = 'QnA'
 		<if test="title != null">
 			and board_title like '%' || #{title} || '%'
 		</if>
@@ -34,7 +34,7 @@
 		ORDER BY board_code
 	</select>
 
-	<insert id="noticeInsert"
+	<insert id="qnaInsert"
 		parameterType="com.sample.vienna.domain.ComBoardVO">
 		insert INTO com_board
 		(
@@ -48,7 +48,7 @@
 		record_by 
 		)values(
 		ic.nextval,
-		'NOTICE',
+		'QnA',
 		#{title},
 		#{contents},
 		sysdate,

@@ -6,16 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>Q&A</title>
 <script type="text/javascript">
 $(document).ready(function(){
-	getNoticeList();
+	getQnaList();
 });
 /* sourceTreeTest */
-function getNoticeList() {
+function getQnaList() {
 	$.ajax({
 		type: "POST",
-		url: "${CONTEXT_PATH}/notice/noticeList",
+		url: "${CONTEXT_PATH}/qna/qnaList",
 		data: {
 			title : $("#title").val(),
 			createBy : $("#createBy").val(),
@@ -33,7 +33,7 @@ function getNoticeList() {
 			html += "<th>수정일</th>";
 			
 			
-			var getData = data.noticeList;
+			var getData = data.qnaList;
 			for(idx in getData) {
 				html += "<tr>"
 				html += "<td>"+(parseInt(idx) + 1)+"</td>"
@@ -48,7 +48,7 @@ function getNoticeList() {
 				//$("#boardList tr").html(data);
 				}
 			
-			$("#noticeList").html(html);
+			$("#qnaList").html(html);
 		},
 		error: function(xhr, status, error) {
 			alert(error);
@@ -64,20 +64,20 @@ function getNoticeList() {
 </script>
 <div>Search</div>
 <div>
-	<label>Title</label>
+	<label>제목</label>
 	<input type="text" id="title" name="title" />
-	<label>Content</label>
+	<label>내용</label>
 	<input type="text" id="contents" name="contents" />
-	<label>Writer</label>
+	<label>작성자</label>
 	<input type="text" id="createBy" name="createBy" />
-	<input type="button" value="검색" onclick="getNoticeList();" />
+	<input type="button" value="검색" onclick="getQnaList();" />
 </div>
-<div>Board List</div>
-<table border="1" id=noticeList>
+<div>QnA List</div>
+<table border="1" id=qnaList>
 
 </table>
 <div>
-	<input type="button" value="등록" onclick="location.href='${CONTEXT_PATH}/notice/noticeBoardRegister'" />
+	<input type="button" value="등록" onclick="location.href='${CONTEXT_PATH}/qna/qnaBoardRegister'" />
 </div>
 </body>
 </html>

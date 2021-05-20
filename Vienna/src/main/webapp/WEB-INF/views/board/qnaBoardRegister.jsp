@@ -9,11 +9,11 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#noticeInsert").click(function() {
+		$("#qnaInsert").click(function() {
 			console.log("1");
 			$.ajax({
 				type: "POST",
-				url: "${CONTEXT_PATH}/notice/noticeInsert",
+				url: "${CONTEXT_PATH}/qna/qnaInsert",
 				data: {
 					title : $("#title").val(),
 					createBy : $("#createBy").val(),
@@ -21,7 +21,7 @@
 				},
 				success : function(data){
 					alert("등록 성공");
-					window.location.href = "${CONTEXT_PATH}/notice/noticeBoard";
+					window.location.href = "${CONTEXT_PATH}/qna/qnaBoard";
 				},
 				error: function(xhr, status, error) {
 					alert(error);
@@ -44,8 +44,8 @@
 	</div>
 </div>
 <div>
-	<input type="button" value="취소" onclick="location.href='${CONTEXT_PATH}/board/noticeBoard'" />
-	<button id="noticeInsert">등록</button>
+	<input type="button" value="취소" onclick="location.href='${CONTEXT_PATH}/qna/qnaBoard'" />
+	<button id="qnaInsert">등록</button>
 	<input type="button" value="메인화면으로" onclick="location.href='${CONTEXT_PATH}/main/main'" />
 </div>
 </body>

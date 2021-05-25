@@ -9,13 +9,13 @@
 <title>Q&A</title>
 <script type="text/javascript">
 $(document).ready(function(){
-	getQnaList();
+	getQnaDetail();
 });
 /* sourceTreeTest */
-function getQnaList() {
+function getQnaDetail() {
 	$.ajax({
 		type: "POST",
-		url: "${CONTEXT_PATH}/qna/qnaList",
+		url: "${CONTEXT_PATH}/qna/qnaDetail",
 		data: {
 			title : $("#title").val(),
 			createBy : $("#createBy").val(),
@@ -38,8 +38,7 @@ function getQnaList() {
 				html += "<tr>"
 				html += "<td>"+(parseInt(idx) + 1)+"</td>"
 				html += "<td>"+getData[idx].type+"</td>"
-				/* html += "<td>"+getData[idx].title+"</td>" */ 
-			  	html += "<td>"+"<a href=${CONTEXT_PATH}/qna/qnaDetail?code=${getData}>"+${getData}&nbsp;+"</a>"+"</td>"  
+				html += "<td>"+getData[idx].title+"</td>"
 				html += "<td>"+getData[idx].contents+"</td>"
 				html += "<td>"+getData[idx].cnt+"</td>"
 				html += "<td>"+getData[idx].cby+"</td>"
@@ -71,16 +70,15 @@ function getQnaList() {
 	<input type="text" id="contents" name="contents" />
 	<label>작성자</label>
 	<input type="text" id="createBy" name="createBy" />
-	<input type="button" value="검색" onclick="getQnaList();" />
 	
 </div>
-<div>QnA List</div>
+<div>QnA Detail</div>
 <table border="1" id=qnaList>
 
 </table>
 <div>
-	<input type="button" value="등록" onclick="location.href='${CONTEXT_PATH}/qna/qnaBoardRegister'" />
-	<input type="button" value="자세히" onclick="location.href='${CONTEXT_PATH}/qna/goQnaDetail'" />
+	<input type="button" value="수정" onclick="location.href='${CONTEXT_PATH}/qna/qnaBoardRegister'" />
+	<input type="button" value="자세히" onclick="location.href='${CONTEXT_PATH}/qna/qnaDetail'" />
 </div>
 </body>
 </html>

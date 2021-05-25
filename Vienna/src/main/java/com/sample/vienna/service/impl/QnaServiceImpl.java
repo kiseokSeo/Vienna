@@ -24,5 +24,14 @@ public class QnaServiceImpl implements QnaService {
 	public void qnaInsert(ComBoardVO comBoardVal) {
 		mapper.qnaInsert(comBoardVal);
 	}
+
+	@Override
+	public List<ComBoardVO> qnaDetail(ComBoardVO comBoardVal) {
+		return mapper.qnaDetail(comBoardVal);
+	}
+
+
+		
+	}
 	
-}
+

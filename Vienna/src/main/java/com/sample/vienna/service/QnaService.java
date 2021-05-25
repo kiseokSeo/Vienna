@@ -9,6 +9,8 @@ public interface QnaService {
 	public List<ComBoardVO> qnaList(ComBoardVO comBoardVal);
 	
 	public void qnaInsert(ComBoardVO comBoardVal);
+	
+	public List<ComBoardVO> qnaDetail(ComBoardVO comBoardVal);
 
 	
 	

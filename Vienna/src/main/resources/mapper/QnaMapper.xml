@@ -16,12 +16,14 @@
 		create_by as CBy,
 		record_date as Rdate,
 		record_by as RBy,
-		del_yn as DelYn,
+		del_yn as
+		DelYn,
 		display_yn as DisplayYn
 
 		FROM com_board
 		where 1=1
-		and board_type = 'QnA'
+		and board_type =
+		'QnA'
 		<if test="title != null">
 			and board_title like '%' || #{title} || '%'
 		</if>
@@ -45,7 +47,7 @@
 		create_date ,
 		create_by ,
 		record_date ,
-		record_by 
+		record_by
 		)values(
 		ic.nextval,
 		'QnA',
@@ -56,6 +58,27 @@
 		sysdate,
 		#{CBy}
 		)
-		
+
 	</insert>
+	<select id="qnaDetail"
+		resultType="com.sample.vienna.domain.ComBoardVO"
+		parameterType="com.sample.vienna.domain.ComBoardVO">
+		SELECT
+		board_code as code,
+		board_type as type,
+		board_title as title,
+		board_contents as contents,
+		board_cnt as cnt,
+		create_date as CDate,
+		create_by as CBy,
+		record_date as Rdate,
+		record_by as RBy,
+		del_yn as
+		DelYn,
+		display_yn as DisplayYn
+
+		FROM com_board
+		where 1=1
+        and board_code=${code}
+	</select>
 </mapper>

@@ -11,6 +11,9 @@
 <body>
 <div>
 	Main Test
+	<span>
+		<input type="button" value="로그인" onclick="location.href='${CONTEXT_PATH}/main/login'" />
+	</span>
 </div>
 <div>
 	<input type="button" value="게시판" onclick="location.href='${CONTEXT_PATH}/board/board'" />

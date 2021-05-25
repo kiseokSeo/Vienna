@@ -10,4 +10,7 @@ public interface QnaMapper {
 	
 	public void qnaInsert(ComBoardVO comBoardVal);
 	
+	public List<ComBoardVO> qnaDetail(ComBoardVO comBoardVal);
+	
+	
 }

@@ -11,22 +11,6 @@
 $(document).ready(function(){
 	getQnaList();
 });
-function goDetail(code){
-	$.ajax({
-		type: "POST",
-		url: "${CONTEXT_PATH}/qna/qnaList",
-		data: {
-			code : code,
-		},
-		success : function(data, status, xhr){
-			consol.log("test11");
-},
-		error : function(xhr, status, error){
-			alert(error);	
-		}
-	});
-}
-
 /* sourceTreeTest */
 function getQnaList() {
 	$.ajax({

@@ -67,17 +67,17 @@ public class QnaController {
 		return "board/qnaBoardRegister";
 	}
 
-	@RequestMapping(value = "/qnaDetail", method = { RequestMethod.GET })
+	@RequestMapping(value = "/qnaDetail", method = { RequestMethod.POST })
 	@ResponseBody
-	public Object boardDetail(HttpServletRequest request, Model model, String code) {
+	public Object qnaDetail(HttpServletRequest request, Model model, String code) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		ComBoardVO comBoardVal = new ComBoardVO();
-		comBoardVal.setCode((int) Integer.parseInt(request.getParameter(code)));
+		comBoardVal.setCode((int) Integer.parseInt(request.getParameter("code")));
 //		comBoardVal.setCode((int) Integer.parseInt("2") );
 
 		qnaService.qnaDetail(comBoardVal);
 
-		map.put("qnaList", qnaService.qnaDetail(comBoardVal));
+		map.put("qnaDetail", qnaService.qnaDetail(comBoardVal));
 		return map;
 	}
 

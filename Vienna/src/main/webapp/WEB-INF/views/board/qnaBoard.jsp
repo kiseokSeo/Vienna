@@ -54,8 +54,8 @@ function getQnaList() {
 				html += "<tr>"
 				html += "<td>"+(parseInt(idx) + 1)+"</td>"
 				html += "<td>"+getData[idx].type+"</td>"
-				/* html += "<td>"+getData[idx].title+"</td>" */ 
-			  	html += "<td>"+"<a href='javascript:goDetail(\""+getData[idx].code+"\")'>"+getData[idx].title+"</a>"+"</td>"  
+				/* html += "<td>"+getData[idx].title+"</td>" */
+			  	html += "<td>"+"<a href='javascript:goDetail(\""+getData[idx].code+"\")'>"+getData[idx].title+"</a>"+"</td>"
 				html += "<td>"+getData[idx].contents+"</td>"
 				html += "<td>"+getData[idx].cnt+"</td>"
 				html += "<td>"+getData[idx].cby+"</td>"

@@ -11,6 +11,22 @@
 $(document).ready(function(){
 	getQnaList();
 });
+function goDetail(code) {
+	$.ajax({
+		type: "POST",
+		url: "${CONTEXT_PATH}/qna/qnaDetail",
+		data: {
+			code: code,
+		},
+		success : function(data, status, xhr){
+			console.log("test11");
+			
+		},
+		error: function(xhr, status, error) {
+			alert(error);
+		}
+	});
+}
 /* sourceTreeTest */
 function getQnaList() {
 	$.ajax({
@@ -39,7 +55,7 @@ function getQnaList() {
 				html += "<td>"+(parseInt(idx) + 1)+"</td>"
 				html += "<td>"+getData[idx].type+"</td>"
 				/* html += "<td>"+getData[idx].title+"</td>" */ 
-			  	html += "<td>"+"<a href=${CONTEXT_PATH}/qna/qnaDetail?code=${getData}>"+${getData}&nbsp;+"</a>"+"</td>"  
+			  	html += "<td>"+"<a href='javascript:goDetail(\""+getData[idx].code+"\")'>"+getData[idx].title+"</a>"+"</td>"  
 				html += "<td>"+getData[idx].contents+"</td>"
 				html += "<td>"+getData[idx].cnt+"</td>"
 				html += "<td>"+getData[idx].cby+"</td>"

@@ -43,14 +43,11 @@ public class MainController {
 		memberVal.setId((String) request.getParameter("id"));
 		memberVal.setPass((String) request.getParameter("pass"));
 
-		System.out.println("111");
         map.put("login", memberService.login(memberVal));
-        System.out.println("222");
          
         // 로그인이 성공하면 UserVO 객체를 반환함.
         //MemberVO vo = memberService.login(memberVal)
         if ( map.get("login") !=null ){// 로그인 성공
-        	System.out.println("333");
         	
             session.setAttribute("login", map.get("login"));// 세션에 login인이란 이름으로 MemberVO 객체를 저장해 놈.
             returnURL ="redirect:/main/main";// 로그인 성공시 메인페이지로 바로 이동하도록 하고

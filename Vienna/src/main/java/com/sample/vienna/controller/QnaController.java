@@ -3,6 +3,7 @@ package com.sample.vienna.controller;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,17 +68,16 @@ public class QnaController {
 		return "board/qnaBoardRegister";
 	}
 
-	@RequestMapping(value = "/qnaDetail", method = { RequestMethod.GET })
+	@RequestMapping(value = "/qnaDetail", method = { RequestMethod.POST })
 	@ResponseBody
-	public Object boardDetail(HttpServletRequest request, Model model, String code) {
+	public Object qnaDetail(HttpServletRequest request, Model model, HttpServletResponse response) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		ComBoardVO comBoardVal = new ComBoardVO();
-		comBoardVal.setCode((int) Integer.parseInt(request.getParameter(code)));
-//		comBoardVal.setCode((int) Integer.parseInt("2") );
+		comBoardVal.setCode((int) Integer.parseInt(request.getParameter("code")));
 
 		qnaService.qnaDetail(comBoardVal);
 
-		map.put("qnaList", qnaService.qnaDetail(comBoardVal));
+		map.put("qnaDetail", qnaService.qnaDetail(comBoardVal));
 		return map;
 	}
 

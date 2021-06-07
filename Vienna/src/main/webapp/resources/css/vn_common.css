@@ -25,16 +25,17 @@
 }
 
 .page_content{
-	width: 90%;
+	/* width: 90%; */
+	width: 100%;
 	height: 600px;
-	background-color: #EAEAEA;
+	--background-color: #ABF200;
 	float: left;
 }
 
 .Header{
-	background-color: #ABF200;
+	background-color: #ece2f1;
 }
 
 .Footer{
-	background-color: #FF00DD;
+	background-color: #EAEAEA;
 }

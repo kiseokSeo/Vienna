@@ -21,4 +21,9 @@
 	<input type="button" value="QnA" onclick="location.href='${CONTEXT_PATH}/qna/qnaBoard'" />
 </div>
 </body>
+<script>
+$(document).ready(function(){
+	console.log("${CONTEXT_PATH}");
+});
+</script>
 </html>

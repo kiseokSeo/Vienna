@@ -24,11 +24,11 @@
   </head>
   
   <body>
-  	<div class='wrap'>
+  	<div align="center" class='wrap'>
   		<tiles:insertAttribute name="header" />
-		  <div class='content'>  	
-  			<tiles:insertAttribute name="left"/>
-	  		<div class="page_content">
+		  <div align="center" class='content'>  	
+  			<%-- <tiles:insertAttribute name="left"/> --%>
+	  		<div align="center" class="page_content">
 	  			<tiles:insertAttribute name="body"/>
 	  		</div>
   		</div>

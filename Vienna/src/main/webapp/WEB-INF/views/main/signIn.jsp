@@ -44,8 +44,8 @@
 	<div>
 		<h2>SignIn</h2>
 	</div>
-	<form>
-		<input type="hidden" id="id_flag" value="N">
+	<form action="/main/insertMember">
+		<input type="hidden" id="id_flag" value="">
 		<div id="content_user" align="left">
 			<div class="text_row">
 				<div class="title">
@@ -173,6 +173,9 @@
 
 
 <script>
+var checkFlg;
+var id, idCheck, pass, pass2, memName, gender, email, phone1, phone2, phone3, address, address2, fruit;
+
 $(document).ready(function(){
 	
 });
@@ -208,42 +211,48 @@ function findAddr(){
 }
 function validation() {
    getValue();
+   checkFlg = "Y";
    
-   if(id.value == "") {alert("ID를 입력해 주세요"); $("#id").focus(); return; };
-   if(idCheck.value == "N") {alert("ID 중복 검사를 해주세요"); $("#id").focus(); return; };
-   if(pass.value == "") {alert("Password를 입력해 주세요"); $("#pass").focus(); return; };
-   if(pass2.value == "") {alert("Password를 확인해 주세요"); $("#pass2").focus(); return; };
-   if(pass.value !== pass2.value) {alert("Password가 다릅니다."); $("#pass2").focus(); return; };
+   if(id == "") {alert("ID를 입력해 주세요"); $("#id").focus(); checkFlg = "N"; return false; };
+   if(idCheck == "" || idCheck.value == "N") {alert("ID 중복 검사를 해주세요"); $("#id").focus(); checkFlg = "N"; return false; };
+   if(pass == "") {alert("Password를 입력해 주세요"); $("#pass").focus(); checkFlg = "N"; return false; };
+   if(pass2 == "") {alert("Password를 확인해 주세요"); $("#pass2").focus(); checkFlg = "N"; return false; };
+   if(pass !== pass2) {alert("Password가 다릅니다."); $("#pass2").focus(); checkFlg = "N"; return false; };
    
-   if(memName.value == "") {alert("이름을 입력해 주세요"); $("#memName").focus(); return; };
+   if(memName == "") {alert("이름을 입력해 주세요"); $("#memName").focus(); checkFlg = "N"; return false; };
    //if(gender == "") {alert("성별을 선택해 주세요"); return; };
-   if(email.value == "") {alert("E-Mail을 입력해 주세요"); $("#email").focus(); return; };
-   if(phone1.value == "") {alert("앞번호를 선택해 주세요"); $("#phone1").focus(); return; };
-   if(phone2.value == "") {alert("중간자리를 입력해 주세요"); $("#phone2").focus(); return; };
-   if(phone3.value == "") {alert("끝자리를 입력해 주세요"); $("#phone3").focus(); return; };
+   if(email == "") {alert("E-Mail을 입력해 주세요"); $("#email").focus(); checkFlg = "N"; return false; };
+   if(phone1 == "") {alert("앞번호를 선택해 주세요"); $("#phone1").focus(); checkFlg = "N"; return false; };
+   if(phone2 == "") {alert("중간자리를 입력해 주세요"); $("#phone2").focus(); checkFlg = "N"; return false; };
+   if(phone3 == "") {alert("끝자리를 입력해 주세요"); $("#phone3").focus(); checkFlg = "N"; return false; };
    //if(fruit == "") {alert("좋아하는것을 선택해 주세요"); return; };
    
    //if(email == checkEmail) { alert(); $("#email").focus(); return; };
+   return true;
 }
 
 function go_submit() {
-   validation();
+   if(validation() == false) {return;}
+   console.log();
+   //if(checkFlg == "N") { return; }
+
    $.ajax({
 		type: "POST",
 		url: "${CONTEXT_PATH}/main/insertMember",
 		data: {
-			id : id.value,
-		   pass : pass.value,
-		   memName : memName.value,
-		   email : email.value,
-		   address : address.value,
-		   address2 : address2.value,
-		   phone : phone1.value,
-		   phone2 : phone2.value,
-		   phone3 : phone3.value
+			id : id,
+		   pass : pass,
+		   memName : memName,
+		   email : email,
+		   address : address,
+		   address2 : address2,
+		   phone : phone1,
+		   phone2 : phone2,
+		   phone3 : phone3
 		},
 		success : function(data){
 		   console.log(data);
+		   alert("가입되었습니다.");
 		   //window.location.href = "${CONTEXT_PATH}/main/main";
 		},
 		error: function(xhr, status, error) {
@@ -253,19 +262,19 @@ function go_submit() {
 }
 
 function getValue() {
-   var id=$("#id").val();
-   var idCheck=$("#id_flag").val();
-   var pass=$("#pass").val();
-   var pass2=$("#pass2").val();
-   var memName=$("#memName").val();
-   var gender=$("input[name=gender]").val();
-   var email=$("#email").val();
-   var phone1=$("#phone1").val();
-   var phone2=$("#phone2").val();
-   var phone3=$("#phone3").val();
-   var address=$("#address").val();
-   var address2=$("#address2").val();
-   var fruit=$("input[name=fruit]").val();
+   id=$("#id").val();
+   idCheck=$("#id_flag").val();
+   pass=$("#pass").val();
+   pass2=$("#pass2").val();
+   memName=$("#memName").val();
+   gender=$("input[name=gender]").val();
+   email=$("#email").val();
+   phone1=$("#phone1").val();
+   phone2=$("#phone2").val();
+   phone3=$("#phone3").val();
+   address=$("#address").val();
+   address2=$("#address2").val();
+   fruit=$("input[name=fruit]").val();
 }
 function idCheck() {
    if($("#id").val() == '') {

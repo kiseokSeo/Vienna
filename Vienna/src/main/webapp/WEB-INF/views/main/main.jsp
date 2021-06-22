@@ -6,13 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Main</title>
 </head>
 <body>
-<div>
+<div align="center">
 	Main Test
 </div>
-<div>
+<div align="center">
 	<input type="button" value="게시판" onclick="location.href='${CONTEXT_PATH}/board/board'" />
 </div>
 </body>

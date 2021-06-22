@@ -8,7 +8,7 @@
 	width: 100%;
 }
 
-.Header, .content, .Footer{
+.Header, .content, .Footer, .page_content{
 	width: 100%;
 	float: left;
 }
@@ -25,16 +25,17 @@
 }
 
 .page_content{
-	width: 90%;
+	/* width: 90%; */
+	width: 100%;
 	height: 600px;
-	background-color: #EAEAEA;
+	/* background-color: #EAEAEA; */
 	float: left;
 }
 
 .Header{
-	background-color: #ABF200;
+	background-color: #EAEAEA;
 }
 
 .Footer{
-	background-color: #FF00DD;
+	background-color: #EAEAEA;
 }

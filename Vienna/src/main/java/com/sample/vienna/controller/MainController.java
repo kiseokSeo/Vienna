@@ -8,9 +8,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sample.vienna.domain.BoardVO;
 import com.sample.vienna.domain.MemberVO;
 import com.sample.vienna.service.MemberService;
 
@@ -30,6 +33,11 @@ public class MainController {
 	public String loginPage() {
 		return "main/login";
 	}
+
+   @RequestMapping("/signIn")
+   public String signInPage() {
+      return "main/signIn";
+   }
 
 	@RequestMapping(value="/loginProcess", method=RequestMethod.POST)
 	public String loginProcess(HttpSession session,HttpServletRequest request, HttpServletResponse response) {
@@ -63,5 +71,35 @@ public class MainController {
         session.invalidate();// 세션 전체를 날려버림
 //      session.removeAttribute("login"); // 하나씩 하려면 이렇게 해도 됨.
         return "redirect:/main/main";// 로그아웃 후 게시글 목록으로 이동하도록...함
+    }
+
+    @RequestMapping(value = "/idCheck", method = RequestMethod.POST)
+    @ResponseBody
+    public Object idCheck(HttpServletRequest request, Model model) {
+       HashMap<String, Object> map = new HashMap<String, Object>();
+       MemberVO memberVal = new MemberVO();
+       
+       memberVal.setId((String) request.getParameter("id"));
+       
+       map.put("idChecked", memberService.idCheck(memberVal));
+       return map;
+    }
+    
+   // 로그아웃 하는 부분
+    @RequestMapping(value="/insertMember")
+    public String insertMember(HttpServletRequest request, Model model) {
+       MemberVO memberVal = new MemberVO();
+       memberVal.setId((String) request.getParameter("id"));
+       memberVal.setPass((String) request.getParameter("pass"));
+       memberVal.setMemName((String) request.getParameter("memName"));
+       memberVal.setEmail((String) request.getParameter("email"));
+       memberVal.setAddress((String) request.getParameter("address"));
+       memberVal.setAddress2((String) request.getParameter("address2"));
+       memberVal.setPhone((String) request.getParameter("phone"));
+       memberVal.setPhone2((String) request.getParameter("phone2"));
+       memberVal.setPhone3((String) request.getParameter("phone3"));
+       memberService.insertMember(memberVal);
+        
+        return "main/main";
     }
 }

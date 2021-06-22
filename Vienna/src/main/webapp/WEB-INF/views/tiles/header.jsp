@@ -47,8 +47,8 @@
 		</ul>
 	</div>
 	<div align="right" style="display:inline-block;width:10%;">
-		<button>로그인</button>
-		<button>회원가입</button>
+		<button onclick="go_login()">로그인</button>
+		<button onclick="go_signIn()">회원가입</button>
 	</div>
 </div>
 </body>
@@ -56,6 +56,14 @@
 $(document).ready(function(){
 	
 });
+
+function go_signIn() {
+   window.location.href = "${CONTEXT_PATH}/main/signIn";
+}
+
+function go_login() {
+   window.location.href = "${CONTEXT_PATH}/main/login";
+}
 </script>
 
 </html>

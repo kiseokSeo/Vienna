@@ -40,7 +40,7 @@
 	</div>
 	<div id="topMenu" style="display:inline-block;">
 		<ul>
-			<li><a class="menuLink" href="#">게시판</a></li>
+			<li><a class="menuLink" href="${CONTEXT_PATH}/board/board">게시판</a></li>
 			<li><a class="menuLink" href="#">공지사항</a></li>
 			<li><a class="menuLink" href="#">추가사항</a></li>
 			<li><a class="menuLink" href="#">공백</a></li>

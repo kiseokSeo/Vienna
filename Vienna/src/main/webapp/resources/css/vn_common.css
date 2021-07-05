@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
 *{
 	margin: 0;
 	padding: 0;
@@ -11,7 +18,7 @@
 	width: 100%;
 	min-height: 100%;
 	position: relative;
-	padding-bottom: 19px; /* footer height */
+	padding-bottom:8em; /* footer height */
 }
 
 .Header, .content, .Footer{
@@ -20,7 +27,7 @@
 }
 
 .content {
-	min-height:98%;
+	min-height:100%;
 }
 
 .Header, .Footer{
@@ -50,5 +57,6 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
+	position:absolute;
 	background-color: #EAEAEA;
 }

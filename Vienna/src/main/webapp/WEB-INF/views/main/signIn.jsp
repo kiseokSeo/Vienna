@@ -288,7 +288,7 @@ function idCheck() {
 			id : $("#id").val()
 		},
 		success : function(data){
-			if(data.idChecked == 1) {
+			if(data.idChecked !== 0) {
 			   $("#id_flag").val("N");
 			   alert("사용중인 ID 입니다.");
 			   $("#id").focus();

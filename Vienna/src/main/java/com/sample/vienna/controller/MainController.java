@@ -85,10 +85,11 @@ public class MainController {
        return map;
     }
     
-   // 로그아웃 하는 부분
-    @RequestMapping(value="/insertMember")
+   // 회원가입
+    @RequestMapping(value="/insertMember", method = RequestMethod.POST)
     public String insertMember(HttpServletRequest request, Model model) {
        MemberVO memberVal = new MemberVO();
+
        memberVal.setId((String) request.getParameter("id"));
        memberVal.setPass((String) request.getParameter("pass"));
        memberVal.setMemName((String) request.getParameter("memName"));
@@ -98,8 +99,9 @@ public class MainController {
        memberVal.setPhone((String) request.getParameter("phone"));
        memberVal.setPhone2((String) request.getParameter("phone2"));
        memberVal.setPhone3((String) request.getParameter("phone3"));
+
        memberService.insertMember(memberVal);
         
-        return "main/main";
+       return "main/main";
     }
 }

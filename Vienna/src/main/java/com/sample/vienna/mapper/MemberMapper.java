@@ -12,4 +12,8 @@ public interface MemberMapper {
 	
 	public List<MemberVO> checkUserWithSessionKey(MemberVO memberVal);
 
+   public Integer idCheck(MemberVO memberVal);
+
+   public void insertMember(MemberVO memberVal);
+
 }

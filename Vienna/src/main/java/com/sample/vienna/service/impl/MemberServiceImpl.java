@@ -30,4 +30,13 @@ public class MemberServiceImpl implements MemberService {
 		mapper.keepLogin(memberVal);
 	}
 	
+   @Override
+   public Integer idCheck(MemberVO memberVal) {
+      return mapper.idCheck(memberVal);
+   }
+
+   @Override
+   public void insertMember(MemberVO memberVal) {
+      mapper.insertMember(memberVal);
+   }
 }
